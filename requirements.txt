@@ -1,0 +1,7 @@
+# Compatible scientific stack for this simulation framework.
+# Numba support currently tracks NumPy <2 in many runtimes, so we pin to 1.26.x.
+numpy==1.26.4
+pandas==2.2.2
+numba==0.59.1
+matplotlib==3.8.4
+scikit-learn==1.4.2
