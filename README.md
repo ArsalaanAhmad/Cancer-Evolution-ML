@@ -58,7 +58,34 @@ This simulator is inspired by **TumE** and **evoCancerGPT-style evolutionary mod
 
 A practical benchmarking workflow is to compare simulated **clonal expansion** trajectories against empirical lung tumor cohorts, including cases that show **late-stage clonal expansions**, then calibrate model priors (driver benefits, bottleneck intensity, oxygen penalties) for improved realism.
 
+## Environment and Dependency Compatibility
+Use the pinned stack in `requirements.txt`. The project intentionally pins **NumPy 1.26.4** to remain compatible with current **Numba** releases used by this simulator.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
 ## Run
 ```bash
 python -m src.main
 ```
+
+## How to Test
+### 1) Static syntax check
+```bash
+python -m py_compile src/cell.py src/simulation.py src/visualizer.py src/main.py
+```
+
+### 2) Smoke tests
+```bash
+python -m unittest tests/test_smoke.py -v
+```
+
+### 3) End-to-end execution
+```bash
+python -m src.main
+```
+Expected outputs: CSV files and PNG plots under `artifacts/`.

@@ -169,10 +169,10 @@ class CancerEvolutionSimulation:
 
     def _update_cell_state(self, cell: CancerCell) -> None:
         oxygen = self._oxygen_at(cell)
-        if oxygen < 0.08 and not cell.has_resistance_mutation(self.resistance_bit):
-            cell.state = CellState.HYPOXIC
-        elif oxygen < 0.03:
+        if oxygen < 0.03 and not cell.has_resistance_mutation(self.resistance_bit):
             cell.state = CellState.APOPTOTIC
+        elif oxygen < 0.08 and not cell.has_resistance_mutation(self.resistance_bit):
+            cell.state = CellState.HYPOXIC
         elif cell.age > 30:
             cell.state = CellState.QUIESCENT
         else:
